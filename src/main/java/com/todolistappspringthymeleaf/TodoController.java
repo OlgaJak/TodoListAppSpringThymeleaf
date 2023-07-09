@@ -1,6 +1,5 @@
 package com.todolistappspringthymeleaf;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,11 +47,13 @@ public class TodoController {
     }
 
     @PostMapping("/update-status/{id}")
-    public String updateTodoStatus(@PathVariable UUID id){
+    public String updateTodoStatus(@PathVariable UUID id, Todo updateRequest){
         try{
-            System.out.println("To do id: " + id);
-            //use todoService to perform update
-            return "redirect:/?message=update successful";
+            updateRequest.setId(id);
+            this.todoService.updateTodoStatus(updateRequest);
+//            System.out.println("To do id: " + id);
+//            //use todoService to perform update
+            return "redirect:/?status=success&message=update successful";
         }catch (Exception exception){
             return "redirect:/?status=failed&message=" + exception.getMessage();
         }

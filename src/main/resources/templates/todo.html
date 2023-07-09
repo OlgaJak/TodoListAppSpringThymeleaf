@@ -34,7 +34,7 @@
     <p th:if="${todoList.isEmpty()}">No items to display at the moment</p>
     <ol th:if="${!todoList.isEmpty()}">
       <li th:each="todoItem: ${todoList}">
-        <span th:class="${todoItem.getStatus().toString() == 'COMPLETE' ? 'completed':'non-completed'}"
+        <span th:class="${todoItem.getStatus().toString() == 'COMPLETED' ? 'completed':'non-completed'}"
                 th:text="${todoItem.getDescription()}"></span>
 
         <form class="same-line" method="post" th:action="${'/update-status/' + todoItem.getId()}">
