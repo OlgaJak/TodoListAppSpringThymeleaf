@@ -47,7 +47,7 @@ public class TodoController {
     }
     }
 
-    @PostMapping("/update-status/:id")
+    @PostMapping("/update-status/{id}")
     public String updateTodoStatus(@PathVariable UUID id){
         try{
             System.out.println("To do id: " + id);
