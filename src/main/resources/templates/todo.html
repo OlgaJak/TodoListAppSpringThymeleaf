@@ -23,8 +23,6 @@
     <input name="description" type="text">
       <button type="submit"> Add item</button>
     </form>
-
-    <div class="green" th:if="${status =='success'}">Todo added Successfully</div>
     <p th:class="${status == 'success'?'green':'red'}" th:if="${message}" th:text="${message}"></p>
 
   </section>
@@ -33,7 +31,7 @@
     <!-- display all todo for m here -->
     <p th:if="${todoList.isEmpty()}">No items to display at the moment</p>
     <ol th:if="${!todoList.isEmpty()}">
-      <li th:each="todoItem: ${todoList}">
+      <li th:each="todoItem: ${todoList}" class="list-item">
         <span th:class="${todoItem.getStatus().toString() == 'COMPLETED' ? 'completed':'non-completed'}"
                 th:text="${todoItem.getDescription()}"></span>
 

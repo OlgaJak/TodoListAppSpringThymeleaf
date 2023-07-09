@@ -9,5 +9,19 @@
 }
 
 .same-line{
+display: inline-block;
+}
 
+.list-item{
+    padding: 4px;
+    border-bottom: 2px solid darkgoldenrod;
+    width: 400px;
+
+}
+.margin{
+    margin: 2px;
+}
+
+.padding{
+    padding: 2px;
 }

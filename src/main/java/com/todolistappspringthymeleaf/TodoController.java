@@ -40,7 +40,7 @@ public class TodoController {
     public String addTodoItem(Todo todo){
         try{
             this.todoService.addTodo(todo);
-            return "redirect:/?status=success";//for not to repeat ourselves we redirect user back to the display page
+            return "redirect:/?status=success&message=Todo item added successfully";//for not to repeat ourselves we redirect user back to the display page
         } catch (Exception exception){
             return "redirect:/?status=failed&message="+exception.getMessage();
     }
