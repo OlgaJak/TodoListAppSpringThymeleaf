@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Application</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <img src="/logo.png" alt="logo">
+  <h1>Todo App</h1>
+</header>
+
+<main>
+  <h3>
+    Add a new item
+  </h3>
+
+  <section>
+
+    <form method="post" action="/add-item">
+    <!-- Add todo for m here -->
+    <input name="description" type="text">
+      <button type="submit"> Add item</button>
+    </form>
+
+    <div class="green" th:if="${status =='success'}">Todo added Successfully</div>
+    <p th:class="${status == 'success'?'green':'red'}" th:if="${message}" th:text="${message}"></p>
+
+  </section>
+
+  <section>
+    <!-- display all todo for m here -->
+    <p th:if="${todoList.isEmpty()}">No items to display at the moment</p>
+    <ol th:if="${!todoList.isEmpty()}">
+      <li th:each="todoItem: ${todoList}">
+        <span th:class="${todoItem.getStatus().toString() == 'COMPLETE' ? 'completed':'non-completed'}"
+                th:text="${todoItem.getDescription()}"></span>
+
+        <form class="same-line" method="post" th:action="${'/update-status/' + todoItem.getId()}">
+          <input name="status" hidden="hidden" value="COMPLETED">
+          <button class="padding margin">&checkmark;</button>
+        </form>
+
+        <form class="same-line" action="/delete-todo">
+          <button class="padding margin">&#128465;</button>
+        </form>
+      </li>
+    </ol>
+  </section>
+
+</main>
+</body>
+</html>
