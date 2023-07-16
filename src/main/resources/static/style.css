@@ -25,3 +25,7 @@ display: inline-block;
 .padding{
     padding: 2px;
 }
+
+.completed{
+    text-decoration: line-through;
+}

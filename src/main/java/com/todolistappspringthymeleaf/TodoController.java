@@ -58,4 +58,18 @@ public class TodoController {
             return "redirect:/?status=failed&message=" + exception.getMessage();
         }
     }
+
+    @PostMapping("/delete/{id}")
+    public String deleteTodoItem(@PathVariable UUID id) {
+        try {
+            //find the todo
+            this.todoService.deleteTodoItem(id);
+            return "redirect:/?status=success&message=Todo item deleted successfully";
+        } catch (Exception exception) {
+            return "redirect:/?status=failed&message=" + exception.getMessage();
+        }
+    }
+
+
+
 }

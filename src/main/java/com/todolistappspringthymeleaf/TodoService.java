@@ -40,4 +40,10 @@ public class TodoService {
         if (!isUpdated.get()) throw new Exception("Update failed,please try again!");
 
     }
+
+    public void deleteTodoItem(UUID id) {
+
+        this.todoList.removeIf(currentTodo->currentTodo.getId().equals(id));
+    }
+
 }
